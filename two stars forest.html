@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Two Stars & a Wish – Forest Feedback Game (Δύο Αστέρια κι Ευχή)</title>
+<style>
+  body {
+    font-family: "Comic Sans MS", "Poppins", sans-serif;
+    background: linear-gradient(to bottom right, #e0f7ff, #eafff4);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #334155;
+  }
+  h1 {
+    margin-top: 20px;
+    font-size: 1.8em;
+    text-align: center;
+  }
+  .poem {
+    text-align: center;
+    max-width: 600px;
+    font-style: italic;
+    color: #065f46;
+    margin: 10px auto 20px;
+    line-height: 1.5;
+  }
+  select, button {
+    font-size: 1em;
+    border-radius: 10px;
+    padding: 10px 14px;
+    border: 2px solid #94a3b8;
+    margin: 8px;
+  }
+  select {
+    background-color: #fff;
+  }
+  button {
+    background-color: #0284c7;
+    color: #fff;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0369a1;
+  }
+  .container {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 700px;
+    width: 90%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+  }
+  .label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+  }
+  .star {
+    font-size: 4em;
+    animation: twinkle 1.5s infinite ease-in-out;
+    margin-top: 20px;
+  }
+  @keyframes twinkle {
+    0%,100% {opacity: 1; transform: scale(1);}
+    50% {opacity: 0.6; transform: scale(1.3);}
+  }
+  .thankyou {
+    font-size: 1.4em;
+    color: #d97706;
+    text-align: center;
+    margin-top: 15px;
+  }
+  .stars-bg span {
+    position: absolute;
+    color: #fde68a;
+    animation: sparkle 4s linear infinite;
+    opacity: 0;
+  }
+  @keyframes sparkle {
+    0% {opacity: 0; transform: translateY(0);}
+    20% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0; transform: translateY(-50px);}
+  }
+</style>
+</head>
+<body>
+<div class="stars-bg"></div>
+<h1>🌲 Two Stars & a Wish – Forest Feedback Game 🌟<br>(Δύο Αστέρια κι Ευχή – Παιχνίδι Ανατροφοδότησης του Δάσους)</h1>
+
+<div class="poem">
+  In the forest where trees grow tall,<br>
+  Duck swims in the pond, having a ball.<br>
+  Hare runs fast, jumping here and there,<br>
+  Mole digs in the dirt, looking everywhere.<br>
+  Squirrel climbs up high, reaching for the sky,<br>
+  Together, we're friends, and we always try! 🌟
+</div>
+
+<div class="container" id="formArea">
+  <label class="label">👧👦 Your name / Το όνομά σου:</label>
+  <select id="studentSelect">
+    <option value="">— Choose your name / Διάλεξε το όνομά σου —</option>
+    <option>Σπυριδούλα</option>
+    <option>Πηνελόπη</option>
+    <option>Ευαγγελία</option>
+    <option>Μαρία</option>
+    <option>Μαριτίνα</option>
+    <option>Αγγελική</option>
+    <option>Γεωργία</option>
+    <option>Ελεάννα</option>
+    <option>Μαρία-Σοφία</option>
+    <option>Κωνσταντίνος</option>
+    <option>Νικόλας</option>
+    <option>Γιάννης</option>
+    <option>Πέτρος</option>
+  </select>
+
+  <label class="label">🌳 Team you are giving feedback to / Ομάδα που σχολιάζεις:</label>
+  <select id="teamSelect">
+    <option value="">— Choose team / Διάλεξε ομάδα —</option>
+    <option>🦆 Duck Team</option>
+    <option>🐇 Hare Team</option>
+    <option>🦦 Mole Team</option>
+    <option>🐿️ Squirrel Team</option>
+    <option>🦊 Fox Team</option>
+    <option>🦉 Owl Team</option>
+  </select>
+
+  <label class="label">⭐ I like... (Μου άρεσε...)</label>
+  <select id="like1">
+    <option value="">— Select —</option>
+    <option>I like your pictures. (Μου άρεσαν οι εικόνες σου.)</option>
+    <option>I like your ideas. (Μου άρεσαν οι ιδέες σου.)</option>
+    <option>I like your teamwork. (Μου άρεσε η συνεργασία σας.)</option>
+    <option>I like your work. (Μου άρεσε η δουλειά σου.)</option>
+  </select>
+
+  <label class="label">⭐ I like... (Μου άρεσε...)</label>
+  <select id="like2">
+    <option value="">— Select —</option>
+    <option>I like your pictures. (Μου άρεσαν οι εικόνες σου.)</option>
+    <option>I like your ideas. (Μου άρεσαν οι ιδέες σου.)</option>
+    <option>I like your teamwork. (Μου άρεσε η συνεργασία σας.)</option>
+    <option>I like your work. (Μου άρεσε η δουλειά σου.)</option>
+  </select>
+
+  <label class="label">✨ I wish you... (Θα ήθελα να...)</label>
+  <select id="wish">
+    <option value="">— Select —</option>
+    <option>I wish the book was longer. (Να ήταν το βιβλίο πιο μεγάλο.)</option>
+    <option>I wish we could use more pictures. (Να μπορούσαμε να χρησιμοποιήσουμε περισσότερες εικόνες.)</option>
+    <option>I wish the book had music or sound. (Να είχε το βιβλίο μουσική ή ήχο.)</option>
+  </select>
+
+  <div style="text-align:center;">
+    <button id="submitBtn">Submit Feedback / Υποβολή σχολίου</button>
+  </div>
+</div>
+
+<div id="thankyouArea" style="display:none; text-align:center;">
+  <div class="star">⭐</div>
+  <div class="thankyou">Thank you for your kind feedback!<br>Ευχαριστούμε για την καλή σου ανατροφοδότηση!</div>
+  <button onclick="resetForm()">🔄 New Feedback / Νέο σχόλιο</button>
+</div>
+
+<audio id="sparkleSound" preload="auto"
+src="data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCA//////////8AAAACAAACcQCA//////////8AAAA8TEFNRTMuOTlyBQAACDQAABYIACAAABEaYXRhAAAAEAAAABAAAACQAAACkAAAAnAAAD//0EAAACAAACcQCA//////////8AAAA=">
+</audio>
+
+<script>
+  const bg = document.querySelector('.stars-bg');
+  for (let i = 0; i < 25; i++) {
+    const s = document.createElement('span');
+    s.textContent = '✨';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 4 + 's';
+    bg.appendChild(s);
+  }
+
+  const btn = document.getElementById('submitBtn');
+  const sound = document.getElementById('sparkleSound');
+  const formArea = document.getElementById('formArea');
+  const thankyouArea = document.getElementById('thankyouArea');
+
+  btn.addEventListener('click', () => {
+    const name = document.getElementById('studentSelect').value;
+    const team = document.getElementById('teamSelect').value;
+    const like1 = document.getElementById('like1').value;
+    const like2 = document.getElementById('like2').value;
+    const wish = document.getElementById('wish').value;
+
+    if (!name || !team || !like1 || !like2 || !wish) {
+      alert("Please complete all fields / Συμπλήρωσε όλα τα πεδία 🙂");
+      return;
+    }
+    sound.currentTime = 0;
+    sound.play();
+    formArea.style.display = 'none';
+    thankyouArea.style.display = 'block';
+  });
+
+  function resetForm() {
+    document.getElementById('studentSelect').value = '';
+    document.getElementById('teamSelect').value = '';
+    document.getElementById('like1').value = '';
+    document.getElementById('like2').value = '';
+    document.getElementById('wish').value = '';
+    thankyouArea.style.display = 'none';
+    formArea.style.display = 'block';
+  }
+</script>
+</body>
+</html>
